@@ -26,7 +26,7 @@ def is_ip(v):
     return re.search(IP_REGEX, v)
 
 def get_name():
-    """Return name based on language support
+    """Return name based on language support."""
     if False:
       return NAME_KOR
     else:
