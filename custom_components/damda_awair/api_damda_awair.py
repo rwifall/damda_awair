@@ -191,7 +191,10 @@ class DamdaAwairAPI:
     @property
     def name(self) -> str:
         """Get name."""
-        return NAME_KOR
+        if false:
+          return NAME_KOR
+        else:
+          return NAME
 
     @property
     def model(self) -> str:
@@ -362,6 +365,7 @@ class DamdaAwairAPI:
         uuid = info.get("device_uuid")
         awair_type = uuid.split("_")[0]
         result = {}
+        name_index = 7
         self.log(0, f"Get data from Awair > {uuid} > {data}")
         for k, v in data.items():
             device_type = AWAIR_DEVICE.get(awair_type)
@@ -373,7 +377,7 @@ class DamdaAwairAPI:
                 unit = t[2] if t is not None else None
                 unique_id = f"{uuid}_{t[0]}" if t is not None else f"{uuid}_{k}"
                 entity_id = f"{uuid}_{t[0]}" if t is not None else f"{uuid}_{k}"
-                entity_name = f"{uuid} {t[1]}" if t is not None else f"{uuid}_{k}"
+                entity_name = f"{uuid} {t[name_index]}" if t is not None else f"{uuid}_{k}"
                 state = t[6](v) if t is not None and t[6] is not None else v
                 entity = self.make_entity(
                     info,

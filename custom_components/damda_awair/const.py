@@ -12,8 +12,8 @@ from homeassistant.const import (
 )
 
 VERSION = "1.2.3"
-BRAND = "Damda"
-NAME = "Damda Awair"
+BRAND = "Awair Inc."
+NAME = "Awair Element"
 NAME_KOR = "담다 어웨어"
 DOMAIN = "damda_awair"
 MODEL = "damda_awair"
@@ -123,6 +123,7 @@ AWAIR_ITEM = {
         "mdi:thermometer",
         SensorDeviceClass.TEMPERATURE,
         float,
+        "Temperature",
     ],
     "humid": [
         "humidity",
@@ -132,6 +133,7 @@ AWAIR_ITEM = {
         "mdi:water-percent",
         SensorDeviceClass.HUMIDITY,
         float,
+        "Humidity",
     ],
     "co2": [
         "co2",
@@ -141,6 +143,7 @@ AWAIR_ITEM = {
         "mdi:molecule-co2",
         SensorDeviceClass.CO2,
         int,
+        "CO₂"
     ],
     "voc": [
         "voc",
@@ -150,6 +153,7 @@ AWAIR_ITEM = {
         "mdi:chemical-weapon",
         SensorDeviceClass.VOLATILE_ORGANIC_COMPOUNDS,
         int,
+        "VOC",
     ],
     "pm25": [
         "pm25",
@@ -159,6 +163,7 @@ AWAIR_ITEM = {
         "mdi:blur",
         SensorDeviceClass.PM25,
         int,
+        "PM2.5",
     ],
     "lux": [
         "lux",
@@ -168,6 +173,7 @@ AWAIR_ITEM = {
         "mdi:weather-sunny",
         SensorDeviceClass.ILLUMINANCE,
         int,
+        "Illuminance",
     ],
     "spl_a": [
         "noise",
@@ -177,6 +183,7 @@ AWAIR_ITEM = {
         "mdi:volume-vibrate",
         None,
         int,
+        "Noise",
     ],
     "timestamp": [
         "updatetime",
@@ -186,6 +193,7 @@ AWAIR_ITEM = {
         "mdi:clock-outline",
         SensorDeviceClass.TIMESTAMP,
         None,
+        "Update time",
     ],
     "dew_point": [
         "dew_point",
@@ -195,6 +203,7 @@ AWAIR_ITEM = {
         "mdi:snowflake",
         SensorDeviceClass.TEMPERATURE,
         float,
+        "Dew point",
     ],
     "abs_humid": [
         "abs_humidity",
@@ -204,6 +213,7 @@ AWAIR_ITEM = {
         "mdi:water-percent",
         SensorDeviceClass.HUMIDITY,
         float,
+        "Absolute humidity",
     ],
     "co2_est": [
         "co2_est",
@@ -213,6 +223,7 @@ AWAIR_ITEM = {
         "mdi:molecule-co2",
         SensorDeviceClass.CO2,
         int,
+        "CO₂ est",
     ],
     "co2_est_baseline": [
         "co2_est_baseline",
@@ -222,6 +233,7 @@ AWAIR_ITEM = {
         "mdi:molecule-co2",
         SensorDeviceClass.CO2,
         int,
+        "CO₂ est baseline",
     ],
     "voc_baseline": [
         "voc_baseline",
@@ -231,6 +243,7 @@ AWAIR_ITEM = {
         "mdi:chemical-weapon",
         SensorDeviceClass.VOLATILE_ORGANIC_COMPOUNDS,
         int,
+        "VOC Baseline",
     ],
     "voc_h2_raw": [
         "voc_h2_raw",
@@ -240,6 +253,7 @@ AWAIR_ITEM = {
         "mdi:chemical-weapon",
         SensorDeviceClass.VOLATILE_ORGANIC_COMPOUNDS,
         int,
+        "VOC H₂ Raw",
     ],
     "voc_ethanol_raw": [
         "voc_ethanol_raw",
@@ -249,6 +263,7 @@ AWAIR_ITEM = {
         "mdi:chemical-weapon",
         SensorDeviceClass.VOLATILE_ORGANIC_COMPOUNDS,
         int,
+        "VOC Ethanol Raw",
     ],
     "pm10_est": [
         "pm10_est",
@@ -258,5 +273,6 @@ AWAIR_ITEM = {
         "mdi:blur",
         SensorDeviceClass.PM10,
         int,
+        "PM10 est"
     ],
 }

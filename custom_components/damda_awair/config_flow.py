@@ -9,7 +9,7 @@ from homeassistant import config_entries
 from homeassistant.helpers.typing import DiscoveryInfoType
 
 from .api_damda_awair import get_api, DamdaAwairAPI as API
-from .const import API_NAME, DOMAIN, NAME_KOR
+from .const import API_NAME, DOMAIN, NAME_KOR, NAME
 
 IP_REGEX = r"^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$"
 STEP_USER_DATA_SCHEMA = vol.Schema(
@@ -25,6 +25,12 @@ def is_ip(v):
     """Return gateway connection type."""
     return re.search(IP_REGEX, v)
 
+def get_name():
+    "" Return name based on language support
+    if False:
+      return NAME_KOR
+    else:
+      return NAME
 
 class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Damda Awair."""
@@ -70,14 +76,14 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             return self.async_abort(
                 reason="add_complete", description_placeholders={"ip": ip}
             )
-        return self.async_create_entry(title=NAME_KOR, data={})
+        return self.async_create_entry(title=get_name(), data={})
 
     async def async_step_add_awair(self, user_input=None):
         """Handle the initial step."""
         unique_id = await self.async_set_unique_id(DOMAIN)
         if unique_id is not None:
             return self.async_abort(reason="discovery_complete")
-        return self.async_create_entry(title=NAME_KOR, data={})
+        return self.async_create_entry(title=get_name(), data={})
 
     async def async_step_zeroconf(self, discovery_info: DiscoveryInfoType):
         """Handle a flow initialized by zeroconf discovery."""
@@ -100,4 +106,5 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if discovery_info is not None:
             self.discovered = True
             return self.async_show_form(step_id="add_awair", errors={})
-        return self.async_create_entry(title=NAME_KOR, data={})
+        return self.async_create_entry(title=get_name(), data={})
+
