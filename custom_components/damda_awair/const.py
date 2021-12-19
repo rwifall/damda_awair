@@ -114,7 +114,7 @@ AWAIR_DEVICE = {
 }
 
 AWAIR_ITEM = {
-    "score": ["score", "점수", "", SENSOR_DOMAIN, "mdi:periodic-table", None, int],
+    "score": ["score", "점수", "", SENSOR_DOMAIN, "mdi:periodic-table", None, int, "Score"],
     "temp": [
         "temperature",
         "온도",
