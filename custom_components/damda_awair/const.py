@@ -191,7 +191,7 @@ AWAIR_ITEM = {
         None,
         SENSOR_DOMAIN,
         "mdi:clock-outline",
-        SensorDeviceClass.TIMESTAMP,
+        None,
         None,
         "Update time",
     ],
