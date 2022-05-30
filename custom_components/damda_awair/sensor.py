@@ -1,5 +1,6 @@
 """Damda Awair's sensor entity."""
 from datetime import timedelta
+from dateutil import parser
 from homeassistant.core import callback
 from .device_damda_awair import DAwairDevice
 from homeassistant.components.sensor import SensorEntity
@@ -105,7 +106,7 @@ class DAwairSensor(DAwairDevice, SensorEntity):
     @property
     def native_value(self):
         """Return the state of the sensor."""
-        native_value = self.api.get_state(self.unique_id)
+        native_value = self.convert_state(self.api.get_state(self.unique_id))
         return native_value
 
     @property
@@ -139,3 +140,16 @@ class DAwairSensor(DAwairDevice, SensorEntity):
     async def async_update(self):
         """Update API."""
         await self.api.update_awair(self.device_uuid)
+        
+    def convert_state(self, state) -> Union[datetime, float, int, str, bool]:
+        """Convert state if needed."""
+        if state is not None and self.device_class == SensorDeviceClass.TIMESTAMP:
+            try:
+                return parser.parse(state)
+            except (ValueError, TypeError):
+                _LOGGER.error(
+                    f"Invalid ISO date string ({state}): {self.entity_id} has a timestamp device class"
+                )
+                return None
+
+        return state 
