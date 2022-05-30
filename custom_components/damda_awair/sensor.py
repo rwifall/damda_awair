@@ -129,7 +129,7 @@ class DAwairSensor(DAwairDevice, SensorEntity):
     @property
     def state_class(self):
         """Type of this sensor state."""
-        return "measurement" if isnumber(self.state) else None
+        return "measurement" if isnumber(self.native_value) else None
 
     @property
     def should_poll(self) -> bool:
