@@ -103,10 +103,10 @@ class DAwairSensor(DAwairDevice, SensorEntity):
     TYPE = SENSOR_DOMAIN
 
     @property
-    def state(self):
+    def native_value(self):
         """Return the state of the sensor."""
-        state = self.api.get_state(self.unique_id)
-        return state
+        native_value = self.api.get_state(self.unique_id)
+        return native_value
 
     @property
     def icon(self):
@@ -121,7 +121,7 @@ class DAwairSensor(DAwairDevice, SensorEntity):
         return value
 
     @property
-    def unit_of_measurement(self):
+    def native_unit_of_measurement(self):
         """Return the unit of measurement of this sensor."""
         value = self.api.get_state(self.unique_id, DEVICE_UNIT)
         return value
