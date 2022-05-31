@@ -141,7 +141,7 @@ class DAwairSensor(DAwairDevice, SensorEntity):
         """Update API."""
         await self.api.update_awair(self.device_uuid)
         
-    def convert_state(self, state) -> Union[datetime, float, int, str, bool]:
+    def convert_state(self, state):
         """Convert state if needed."""
         if state is not None and self.device_class == SensorDeviceClass.TIMESTAMP:
             try:
