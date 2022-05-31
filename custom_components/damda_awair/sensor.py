@@ -4,6 +4,7 @@ from dateutil import parser
 from homeassistant.core import callback
 from .device_damda_awair import DAwairDevice
 from homeassistant.components.sensor import SensorEntity
+from homeassistant.components.sensor import SensorDeviceClass
 from .api_damda_awair import get_api
 
 from .const import (
